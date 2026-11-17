@@ -165,8 +165,8 @@ document.getElementById('share-btn').addEventListener('click', async () => {
  var mask=document.getElementById('ed-mask'),pw=document.getElementById('ed-pw'),err=document.getElementById('ed-err');
  function openModal(){err.textContent='';pw.value='';mask.style.display='flex';setTimeout(function(){pw.focus();},50);}
  function closeModal(){mask.style.display='none';}
- function tryPw(){if(pw.value===PW){closeModal();sessionStorage.setItem('ga_ed_ok','1');enter();}else{err.textContent='암호가 올바르지 않습니다.';pw.value='';pw.focus();}}
- document.getElementById('ed-fab').addEventListener('click',function(){if(sessionStorage.getItem('ga_ed_ok')==='1'){enter();}else{openModal();}});
+ function tryPw(){if(pw.value===PW){closeModal();enter();}else{err.textContent='암호가 올바르지 않습니다.';pw.value='';pw.focus();}}
+ document.getElementById('ed-fab').addEventListener('click',openModal);
  document.getElementById('ed-ok').addEventListener('click',tryPw);
  document.getElementById('ed-cancel').addEventListener('click',closeModal);
  pw.addEventListener('keydown',function(e){if(e.key==='Enter')tryPw();});
